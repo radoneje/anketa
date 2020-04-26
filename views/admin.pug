@@ -1,0 +1,14 @@
+extends layout
+block head
+  script(src="/javascripts/adminScript.js")
+block content
+  h3 Конструктор анкеты
+  div#app(v-bind:class="{visible:opacity}")
+    div.card(style="width: 1000px;" v-for="item in items")
+      itemcart(:item="item"  v-on:addchild="onaddchild($event)" v-on:additem="onnadditem($event)" v-on:deleteitem="ondeleteitem($event)")
+    div.btn.btn-success.btn-sm(v-if="items.length==0" v-on:click="addItem(null)") Добавить блок
+
+  div
+
+
+

@@ -1,0 +1,16 @@
+div.card-body.mt-1.anketaCard(style="position:relative")
+    div.clearfix.anketaItem
+        div.float-left {{item.title}}: &nbsp;
+        input.float-left(v-if="item.type==1" type="text" v-model='item.text' v-on:change="updateText($event, item)")
+        textarea.float-left(v-if="item.type==2" type="text" v-model='item.text' v-on:change=" updateText($event, item)")
+        div.float-left(v-if="item.type==3" type="text" v-on:click="showCalendar($event, item)")  {{formatDate(item.date)}}
+        input.float-left(v-if="item.type==4" type="number" v-model='item.int' v-on:change="updateInt($event, item)")
+        select.float-left(v-if="item.type==5" v-model='item.int' v-on:change="updateInt($event, item)" )
+            option(v-for="l in item.list" :value="l.id" v-bind:selected="{selected:l.id==item.int}" ) {{l.title}}
+        div.float-left(v-if="item.type==6" )
+            div.atketaSelectItem(v-for="l in item.list" :value="l.id" v-bind:class="{active:l.isActive}" style="display:inline-block;" v-on:click="updateList(item, l)")
+                div {{l.title}}
+        div.float-left(v-if="item.descr && item.descr.length>0" style="display:inline-block; margin-left:20px; cursor:pointer" v-on:click="showHelp($event, item.id)") ?
+    div(v-for="child in item.child")
+        anketacart(:item="child")
+    div.help(:id="'help_'+item.id" v-on:click="hideHelp(item.id)") {{item.descr}}

@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  div(style="display:flex; align-items: center; justify-content: center;")
+    form(method='POST' action='userLogin' style="width:300px")
+      div Вход пользователя
+      input.form-control(placeholder='Ваше имя' name="name" value=name)
+      input.form-control(type="password" placeholder='Пароль' name="pass")
+      input.btn.btn-primary(type='submit' value='Войти')

@@ -1,0 +1,61 @@
+body{
+  padding: 20px;
+}
+#app{
+  opacity: 0;
+}
+.visible{
+  opacity: 1 !important;
+}
+
+.anketaItem{
+  border-left: 1px solid black;
+  padding-left: 10px;
+}
+.anketaCard {
+  padding: 0;
+  margin-left: 100px;
+
+}
+.atketaSelectItem{
+  position: relative;
+  cursor: pointer;
+  margin-left: 40px;
+}
+
+.atketaSelectItem::before {
+  position: absolute;
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 4px;
+  border: 2px solid #333;
+  bottom: 5px;
+  left: -15px;
+}
+
+.atketaSelectItem.active::before {
+  position: absolute;
+  content: "";
+  width: 9px;
+  height: 11px;
+  border-radius: 0px;
+  border: 0px solid #333;
+  border-bottom: 2px solid #28a745;
+  border-right: 2px solid #28a745;
+  color: #28a745;
+  bottom: 9px;
+  left: -15px;
+  transform: rotate(45deg);
+}
+.help {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: lightgray;
+  padding: 10px;
+  z-index: 1;
+  border-radius: 4px;
+  box-shadow: 0 0 4px 0;
+  display:none;
+}

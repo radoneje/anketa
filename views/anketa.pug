@@ -1,0 +1,14 @@
+extends layout
+block head
+  script var id=!{id};
+  script(src="/javascripts/anketaScript.js")
+
+
+block content
+  div#app(v-bind:class="{visible:opacity}")
+    h1 {{rec.title}}
+    div.mt-3
+      div(v-for="item in template")
+        anketacart(:item="item")
+
+

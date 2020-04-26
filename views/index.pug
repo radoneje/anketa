@@ -1,0 +1,16 @@
+extends layout
+block head
+  script(src="/javascripts/indexScript.js")
+block content
+  div#app(v-bind:class="{visible:opacity}")
+    h1 Анкеты
+      span &nbsp;
+        input.btn.btn-success.btn-sm(type="button" value='Создать Анкету' v-on:click="addItem")
+    div
+      div.mb-3(v-for="item in items")
+        span {{moment(item.date).format('DD.MM.YYYY HH:mm')}}
+        span &nbsp;&nbsp;
+        input(placeholder="Введите назвение" style="width:300px" v-model="item.title" v-on:change="editItem(item)")
+        input.btn.btn-success.btn-sm(type="button" value='Перейти' v-on:click="goTo(item)")
+        input.btn.btn-danger.btn-sm(type="button" value='Удалить' v-on:click="deleteItem(item)")
+

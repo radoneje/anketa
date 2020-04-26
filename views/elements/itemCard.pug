@@ -1,0 +1,44 @@
+div.card-body
+    form
+        div.row
+            div.col
+                label Название
+                input.form-control.form-control-sm(v-model="item.title" v-on:change="changeItem()")
+            div.col
+                label Тип поля
+                select.form-control.form-control-sm(v-model="item.type" v-on:change="changeItem()")
+                    option(value="1" v-bind:selected="{selected:item.type==1}") Строка
+                    option(value="2" v-bind:selected="{selected:item.type==2}") Текст
+                    option(value="3" v-bind:selected="{selected:item.type==3}") Дата и время
+                    option(value="4" v-bind:selected="{selected:item.type==4}") Число
+                    option(value="5" v-bind:selected="{selected:item.type==5}") Выбор
+                    option(value="6" v-bind:selected="{selected:item.type==6}") Список
+
+            div.col
+                label Обязательно
+                div.form-check
+                    input.form-check-input(type="checkbox" v-model="item.must" v-on:change="changeItem()")
+            div.col
+                label Подсказка
+                textarea.form-control(v-model="item.descr" v-on:change="changeItem()")
+        div.row.mt-3(v-if="item.type>=5")
+            div.col
+            div.col
+                div
+                    div.input-group.input-group-sm(v-for="elem in item.list")
+                        input.form-control.form-control-sm(placeholder="текст элемента списка"  v-model="elem.title" v-on:change="editListElem()")
+                        div.input-group-append
+                            span.input-group-text(v-on:click="delListElem(elem)") Del
+                div.input-group.input-group-sm
+                    input.form-control.form-control-sm(placeholder="текст элемента списка" v-model="newListElem" )
+                    div.input-group-append
+                        span.input-group-text(v-on:click="AddNewListElem()") Add
+            div.col
+            div.col
+    div.clearfix.mt-3
+        div.btn-group.btn-group-sm.float-right
+            div.btn.btn-success.btn-sm(v-on:click="addItem(item.parent)") Добавить блок
+            div.btn.btn-success(v-on:click="addChild(item)") Добавить ветку
+            div.btn.btn-warning(v-on:click="deleteBlock(item)") Удалить блок
+    div.mt-3(style="margin-left:40px; border-left:1px solid #dedede; border-top:1px solid #dedede" v-for="subItem in item.child")
+        itemcart(:item="subItem" v-on:addchild="onaddchild($event)" v-on:additem="onnadditem($event)" v-on:deleteitem="ondeleteitem($event)")
