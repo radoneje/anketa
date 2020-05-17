@@ -70,12 +70,14 @@ window.onload=async function () {
          template:[],
          rec:{},
          opacity:false,
+         isLoaded:false
      },
      methods:{
 
          moment:moment
      },
      mounted:async function () {
+         this.opacity=true;
          this.rec=(await axios.get("/rest/api/anketaTitle/"+id)).data;
          var val=await axios.get("/rest/api/anketaValues/"+id);
         var dt=await axios.get("/rest/api/anketaAitems");
@@ -86,7 +88,7 @@ window.onload=async function () {
 
         this.template=dt.data;
         console.log(this.template)
-         this.opacity=true;
+        this.isLoaded=true;
      }
  });
 }
