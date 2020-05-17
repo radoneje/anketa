@@ -59,3 +59,20 @@ body{
   box-shadow: 0 0 4px 0;
   display:none;
 }
+@keyframes loading {
+  0%{
+    width: 0;
+  }
+  100%
+  {
+    width: 100%;
+  }
+}
+.loader
+{
+  box-sizing: border-box;
+  height: 20px;
+  background: #28a745;
+  animation: loading 10s;
+
+}
