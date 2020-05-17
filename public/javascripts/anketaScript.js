@@ -100,7 +100,8 @@ function  setData(dt, val){
         d.json=[];
         d.int=0;
         d.date=new Date();
-        console.log("val",val.data)
+        if(!val.data)
+         console.log("val",val)
         val.data.forEach(v=>{
             if(v.itemid==d.id){
                 d.text=v.text;
