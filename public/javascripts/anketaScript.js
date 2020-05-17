@@ -93,14 +93,14 @@ window.onload=async function () {
  });
 }
 function  setData(dt, val){
-    console.log(dt,val)
+   // console.log(dt.data, val.data)
     dt.data.forEach(d=>{
         d.text='';
         d.bool=false;
         d.json=[];
         d.int=0;
         d.date=new Date();
-        //console.log(val.data)
+        console.log("val",val.data)
         val.data.forEach(v=>{
             if(v.itemid==d.id){
                 d.text=v.text;
