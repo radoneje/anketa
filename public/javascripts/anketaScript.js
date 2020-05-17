@@ -84,8 +84,6 @@ window.onload=async function () {
             item.child=await getChildElems(item.id, val);
         }
 
-
-
         this.template=dt.data;
         console.log(this.template)
          this.opacity=true;
@@ -125,7 +123,7 @@ function  setData(dt, val){
 async function getChildElems(id, val) {
     var dt=await axios.get("/rest/api/anketaAitems/"+id);
     for(var item of dt.data){
-        item.child=await getChildElems(item.id);
+        item.child=await getChildElems(item.id,val);
     }
         console.log("getChildElems",id, val)
     dt=setData(dt, val)
