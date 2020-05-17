@@ -5,10 +5,12 @@ block head
 
 
 block content
-  div#app(v-bind:class="{visible:opacity}")
-    h1 {{rec.title}}
-    div.mt-3
-      div(v-for="item in template")
-        anketacart(:item="item")
+  div#app
+    div(v-if="!opacity") Загружаю...
+    div(v-bind:class="{visible:opacity}")
+      h1 {{rec.title}}
+      div.mt-3
+        div(v-for="item in template")
+          anketacart(:item="item")
 
 

@@ -91,7 +91,6 @@ window.onload=async function () {
  });
 }
 function  setData(dt, val){
-   // console.log(dt.data, val.data)
     dt.data.forEach(d=>{
         d.text='';
         d.bool=false;
@@ -125,7 +124,6 @@ async function getChildElems(id, val) {
     for(var item of dt.data){
         item.child=await getChildElems(item.id,val);
     }
-        console.log("getChildElems",id, val)
     dt=setData(dt, val)
     return dt.data;
 }
