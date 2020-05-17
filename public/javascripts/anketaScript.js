@@ -81,7 +81,7 @@ window.onload=async function () {
         var dt=await axios.get("/rest/api/anketaAitems");
         dt=setData(dt, val)
         for(var item of dt.data){
-        //    item.child=await getChildElems(item.id, val);
+            item.child=await getChildElems(item.id, val);
         }
 
 
@@ -100,8 +100,7 @@ function  setData(dt, val){
         d.json=[];
         d.int=0;
         d.date=new Date();
-        if(!val)
-         console.log("val",val)
+
         val.data.forEach(v=>{
             if(v.itemid==d.id){
                 d.text=v.text;
@@ -128,6 +127,7 @@ async function getChildElems(id, val) {
     for(var item of dt.data){
         item.child=await getChildElems(item.id);
     }
+        console.log("getChildElems",id, val)
     dt=setData(dt, val)
     return dt.data;
 }
